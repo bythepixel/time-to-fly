@@ -20,5 +20,9 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: time_to_fly
+  redis:
+    image: redis:3-alpine
+    ports:
+      - 6379:6379
 networks:
   mynetwork:
