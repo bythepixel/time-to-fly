@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Folklore\GraphQL\Support\Facades\GraphQL;
+
 class WeatherController extends Controller
 {
 
@@ -10,6 +12,7 @@ class WeatherController extends Controller
      */
     public function index()
     {
+        $schema = GraphQL::schema();
         echo "test";
     }
 }

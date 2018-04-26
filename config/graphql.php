@@ -124,7 +124,7 @@ return [
     'schemas' => [
         'default' => [
             'query' => [
-
+                'weather' => 'App\TimeToFly\GraphQL\Query\WeatherQuery'
             ],
             'mutation' => [
 
