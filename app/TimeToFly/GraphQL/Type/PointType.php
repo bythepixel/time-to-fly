@@ -28,13 +28,41 @@ class PointType extends GraphQLType
     public function fields()
     {
         return [
-            'id' => [
-                'type' => Type::nonNull(Type::string()),
-                'description' => 'The id of the user'
-            ],
-            'email' => [
+            'observed_latitude' => [
                 'type' => Type::string(),
-                'description' => 'The email of user'
+                'description' => 'Latitude at Observation Point'
+            ],
+            'observed_longitude' => [
+                'type' => Type::string(),
+                'description' => 'Longitude at Observation Point'
+            ],
+            'observation_time' => [
+                'type' => Type::string(),
+                'description' => 'Time of observation'
+            ],
+            'temperature' => [
+                'type' => Type::string(),
+                'description' => 'Temperature in F'
+            ],
+            'wind' => [
+                'type' => Type::string(),
+                'description' => 'Wind Speed'
+            ],
+            'wind_gust' => [
+                'type' => Type::string(),
+                'description' => 'Wind Gust Speed'
+            ],
+            'conditions' => [
+                'type' => Type::string(),
+                'description' => 'Conditions eg: Sunny, Partly Cloudy'
+            ],
+            'sunrise' => [
+                'type' => Type::string(),
+                'description' => 'Time of Sunrise'
+            ],
+            'sunset' => [
+                'type' => Type::string(),
+                'description' => 'Time of Sunset'
             ]
         ];
     }

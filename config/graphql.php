@@ -181,7 +181,7 @@ return [
      * ]
      */
     'types' => [
-
+        'Point' => 'App\TimeToFly\GraphQL\Type\PointType'
     ],
 
     /*
