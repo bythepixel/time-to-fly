@@ -1,0 +1,24 @@
+version: "3"
+services:
+  web:
+    volumes:
+      - .:/var/www/html/
+    build: .
+    image: time-to-fly-image
+    container_name: time-to-fly--container
+    env_file:
+      - .env
+    ports:
+      - 8080:80
+    networks:
+      - mynetwork
+  mysql:
+    image: mysql
+    restart: always
+    ports:
+      - 3309:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: time_to_fly
+networks:
+  mynetwork:
