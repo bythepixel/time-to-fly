@@ -1,6 +1,5 @@
 <?php
 
-
 use Phinx\Seed\AbstractSeed;
 
 class WeatherReportSeeder extends AbstractSeed
@@ -15,12 +14,10 @@ class WeatherReportSeeder extends AbstractSeed
      */
     public function run()
     {
-        $weatherStations = \App\TimeToFly\Models\WeatherStation::all();
-
         $data = [];
-        foreach($weatherStations as $weatherStation) {
+        for($i = 1; $i < 2041; $i++) {
             $data[] = [
-                'weather_station_id' => $weatherStation->id,
+                'weather_station_id' => $i,
                 'observation_time' => date('Y-m-d H:i:s'),
                 'temperature' => $this->getTemperature(),
                 'wind_string' => 'THIS IS DESCRIPTIVE',
