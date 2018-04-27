@@ -1,0 +1,28 @@
+
+.color\:white {
+    color: white;
+    fill: white;
+}
+
+.color\:blue-light {
+    color: $color-blue-light;
+    fill: $color-blue-light;
+}
+.color\:blue {
+    color: $color-blue;
+    fill: $color-blue;
+}
+.color\:blue-dark {
+    color: $color-blue-dark;
+    fill: $color-blue-dark;
+}
+
+.bg\:blue-light {
+    background-color: $color-blue-light;
+}
+.bg\:blue {
+    background-color: $color-blue;
+}
+.bg\:blue-dark {
+    background-color: $color-blue-dark;
+}

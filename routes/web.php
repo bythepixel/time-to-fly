@@ -11,8 +11,4 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/weather', 'WeatherController@index')->name('weather-index');
+Route::get('/', 'Client\IndexController@index');

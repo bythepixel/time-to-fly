@@ -31,3 +31,9 @@ Take Docker containers down
 ```
 docker-compose down
 ```
+
+### Seeders
+```
+vendor/bin/phinx seed:run -s WeatherStationSeeder
+vendor/bin/phinx seed:run -s WeatherReportSeeder
+```
