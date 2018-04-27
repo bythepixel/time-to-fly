@@ -3,9 +3,11 @@
 namespace App\TimeToFly\GraphQL\Query;
 
 use App\TimeToFly\Models\WeatherStation;
+use App\TimeToFly\WeatherApi\WeatherApiFactory;
 use GraphQL;
 use GraphQL\Type\Definition\Type;
 use Folklore\GraphQL\Support\Query;
+use Illuminate\Support\Facades\Config;
 
 /**
  * Class WeatherQuery
@@ -41,6 +43,10 @@ class WeatherQuery extends Query
 
     public function resolve($root, $args)
     {
+        $api = WeatherApiFactory::create(WeatherApiFactory::API_WUNDERGROUND, getenv('WUNDERGROUND_API_KEY'));
+        $beacons = $api->getByCoordinates($args['latitude'], $args['longitude']);
+        dd($beacons);
+
         $this->checkForArgs($args);
 
         return WeatherStation::isWithinMaxDistance((int)$args['latitude'], (int)$args['longitude'], 40)->get();
