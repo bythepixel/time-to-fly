@@ -29,20 +29,11 @@ class CreateWeatherStationTable extends AbstractMigration
     public function change()
     {
         // create the table
-        $table = $this->table('weather_reports');
-        $table->addColumn('weather_station_id', 'integer')
-            ->addForeignKey('weather_station_id', 'weather_stations', 'id')
-            ->addColumn('observation_time', 'string')
-            ->addColumn('temperature', 'string')
-            ->addColumn('wind_string', 'string')
-            ->addColumn('wind_direction', 'string')
-            ->addColumn('wind_degrees', 'string')
-            ->addColumn('wind_speed', 'string')
-            ->addColumn('wind_gust_speed', 'string')
-            ->addColumn('feels_like_temperature', 'string')
-            ->addColumn('visibility', 'string')
-            ->addColumn('uv', 'string')
-            ->addColumn('conditions', 'string')
+        $table = $this->table('weather_stations');
+        $table->addColumn('latitude', 'string')
+            ->addColumn('longitude', 'string')
+            ->addColumn('city', 'string')
+            ->addColumn('state', 'string')
             ->create();
     }
 }
