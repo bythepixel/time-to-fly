@@ -1,11 +1,13 @@
 <?php
 
+
 namespace App\TimeToFly\GraphQL\Type;
+
 
 use GraphQL\Type\Definition\Type;
 use Folklore\GraphQL\Support\Type as GraphQLType;
 
-class PointType extends GraphQLType
+class WeatherReportType extends GraphQLType
 {
     protected $attributes = [
         'name' => 'Point',
@@ -21,46 +23,31 @@ class PointType extends GraphQLType
     public function fields()
     {
         return [
-            'state' => [
-                'type' => Type::string(),
-                'description' => 'State'
-            ],
-            'observed_latitude' => [
-                'type' => Type::string(),
-                'description' => 'Latitude at Observation Point'
-            ],
-            'observed_longitude' => [
-                'type' => Type::string(),
-                'description' => 'Longitude at Observation Point'
-            ],
-            'observation_time' => [
+            'time' => [
                 'type' => Type::string(),
                 'description' => 'Time of observation'
             ],
             'temperature' => [
-                'type' => Type::string(),
+                'type' => Type::float(),
                 'description' => 'Temperature in F'
             ],
             'wind' => [
-                'type' => Type::string(),
+                'type' => Type::float(),
                 'description' => 'Wind Speed'
             ],
-            'wind_gust' => [
-                'type' => Type::string(),
+            'windGust' => [
+                'type' => Type::float(),
                 'description' => 'Wind Gust Speed'
             ],
             'conditions' => [
                 'type' => Type::string(),
                 'description' => 'Conditions eg: Sunny, Partly Cloudy'
-            ],
-            'sunrise' => [
-                'type' => Type::string(),
-                'description' => 'Time of Sunrise'
-            ],
-            'sunset' => [
-                'type' => Type::string(),
-                'description' => 'Time of Sunset'
             ]
         ];
+    }
+
+    public function resolveWindGustField($root, $args)
+    {
+        return $root->wind_gust_speed;
     }
 }

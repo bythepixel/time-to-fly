@@ -2,11 +2,18 @@
 
 namespace App\TimeToFly\GraphQL\Query;
 
-use App\TimeToFly\Models\Point;
+use App\TimeToFly\Models\WeatherStation;
 use GraphQL;
 use GraphQL\Type\Definition\Type;
 use Folklore\GraphQL\Support\Query;
 
+/**
+ * Class WeatherQuery
+ *
+ * Example Query: /graphql?query=query+FetchWeather{weather(latitude:"a",longitude:"b"){weatherReports{conditions}}}
+ *
+ * @package App\TimeToFly\GraphQL\Query
+ */
 class WeatherQuery extends Query
 {
     protected $attributes = [
@@ -15,14 +22,18 @@ class WeatherQuery extends Query
 
     public function type()
     {
-        return Type::listOf(GraphQL::type('Point'));
+        return Type::listOf(GraphQL::type('WeatherStation'));
     }
 
     public function args()
     {
         return [
-            'state' => [
-                'name' => 'state',
+            'latitude' => [
+                'name' => 'latitude',
+                'type' => Type::string(),
+            ],
+            'longitude' => [
+                'name' => 'longitude',
                 'type' => Type::string(),
             ],
         ];
@@ -30,10 +41,14 @@ class WeatherQuery extends Query
 
     public function resolve($root, $args)
     {
-        if (isset($args['state'])) {
-            return Point::where('state', $args['state'])->get();
-        } else {
-            return Point::all();
+        $this->checkForArgs($args);
+        return WeatherStation::all();
+    }
+
+    private function checkForArgs(array $args)
+    {
+        if(!isset($args['latitude']) || !isset($args['longitude'])) {
+            throw new \Exception('You must provide longitude and latitude dummy.');
         }
     }
 }

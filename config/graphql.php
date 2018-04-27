@@ -181,7 +181,8 @@ return [
      * ]
      */
     'types' => [
-        'Point' => 'App\TimeToFly\GraphQL\Type\PointType'
+        'WeatherStation' => 'App\TimeToFly\GraphQL\Type\WeatherStationType',
+        'WeatherReport' => 'App\TimeToFly\GraphQL\Type\WeatherReportType',
     ],
 
     /*
