@@ -42,7 +42,8 @@ class WeatherQuery extends Query
     public function resolve($root, $args)
     {
         $this->checkForArgs($args);
-        return WeatherStation::all();
+
+        return WeatherStation::isWithinMaxDistance((int)$args['latitude'], (int)$args['longitude'], 40)->get();
     }
 
     private function checkForArgs(array $args)
