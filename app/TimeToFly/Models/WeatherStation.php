@@ -4,7 +4,7 @@ namespace App\TimeToFly\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Point extends Model
+class WeatherStation extends Model
 {
-    protected $table = 'points';
+    protected $table = 'weather_stations';
 }
