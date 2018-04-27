@@ -2,6 +2,7 @@
 
 namespace App\TimeToFly\GraphQL\Query;
 
+use App\TimeToFly\Models\Point;
 use GraphQL;
 use GraphQL\Type\Definition\Type;
 use Folklore\GraphQL\Support\Query;
@@ -9,7 +10,7 @@ use Folklore\GraphQL\Support\Query;
 class WeatherQuery extends Query
 {
     protected $attributes = [
-        'name' => 'users'
+        'name' => 'weather'
     ];
 
     public function type()
@@ -20,19 +21,19 @@ class WeatherQuery extends Query
     public function args()
     {
         return [
-            'id' => ['name' => 'id', 'type' => Type::string()],
-            'email' => ['name' => 'email', 'type' => Type::string()]
+            'state' => [
+                'name' => 'state',
+                'type' => Type::string(),
+            ],
         ];
     }
 
     public function resolve($root, $args)
     {
-        if (isset($args['id'])) {
-            return User::where('id' , $args['id'])->get();
-        } else if(isset($args['email'])) {
-            return User::where('email', $args['email'])->get();
+        if (isset($args['state'])) {
+            return Point::where('state', $args['state'])->get();
         } else {
-            return User::all();
+            return Point::all();
         }
     }
 }
