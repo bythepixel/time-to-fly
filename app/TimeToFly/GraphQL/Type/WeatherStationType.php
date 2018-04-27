@@ -3,7 +3,6 @@
 namespace App\TimeToFly\GraphQL\Type;
 
 use App\TimeToFly\Models\WeatherReport;
-use App\TimeToFly\Models\WeatherStation;
 use GraphQL;
 use GraphQL\Type\Definition\Type;
 use Folklore\GraphQL\Support\Type as GraphQLType;
